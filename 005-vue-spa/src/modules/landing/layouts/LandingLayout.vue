@@ -12,7 +12,11 @@
           <RouterLink to="/features">Features</RouterLink>
           <RouterLink to="/pricing">Pricing</RouterLink>
           <RouterLink to="/contact">Contact</RouterLink>
+          <RouterLink to="/dball/1">Personajes Dragon Ball</RouterLink>
         </nav>
+        <div class="ml-auto space-x-4 flex items-center h-10 sm:space-x-6">
+            <RouterLink to="/auth">Login</RouterLink>
+        </div>
       </header>
       <!-- Fin Header -->
   
