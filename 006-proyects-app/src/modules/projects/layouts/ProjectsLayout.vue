@@ -3,7 +3,7 @@
     <div class="flex flex-col">
         <!-- TOP MENU -->
          <TopMenu></TopMenu>
-        <main>
+        <main class="flex flex-row">
         <!-- SIDE MENU -->
             <SideMenu></SideMenu>
 
