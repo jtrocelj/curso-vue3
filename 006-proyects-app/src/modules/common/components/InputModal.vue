@@ -1,9 +1,9 @@
 <template>
 
-<dialog id="my_modal_1" class="modal" :open="open" ref="modalRef">
+<dialog class="modal" :open="open" ref="modalRef">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
+    <h3 class="text-lg font-bold">Nuevo Proyecto</h3>
+    <p class="py-4">Asigna un unico nombre al proyecto</p>
 
     <div class="modal-action flex flex-col">
       <form method="dialog" @submit.prevent="submitValue">
@@ -16,7 +16,7 @@
         >
 
         <div class="flex justify-end mt-5">
-          <button @click="closeModal" class="btn mr-4" type="button">Close</button>
+          <button @click="$emit('close')" class="btn mr-4" type="button">Close</button>
           <button class="btn btn-primary" type="submit">Aceptar</button>
         </div>
       
@@ -65,9 +65,4 @@ const submitValue = ( )=>{
 
 }
 
-const closeModal = ()=>{
-  if (modalRef.value) {
-    modalRef.value.close(); // Cierra el modal usando su referencia
-  }
-}
 </script>

@@ -3,9 +3,9 @@
     <table class="min-w-full bg-white border border-gray-200">
       <thead>
         <tr class="bg-gray-800 text-white">
-          <th class="py-2 px-4 border-b">Song</th>
-          <th class="py-2 px-4 border-b">Artist</th>
-          <th class="py-2 px-4 border-b">Year</th>
+          <th class="py-2 px-4 border-b">Proyecto</th>
+          <th class="py-2 px-4 border-b">Tareas</th>
+          <th class="py-2 px-4 border-b">Avance</th>
         </tr>
       </thead>
       <tbody>
@@ -26,18 +26,51 @@
         </tr>
       </tbody>
     </table>
-    <InputModal  :open="openModal"/>
+
+    <InputModal 
+    :open="openModal" 
+    @close="openModal = false"
+    @value="onNewValue"/>
+
+    <CustomModal :open="customModalOpen">
+      <template #header>
+        <h6>Custom Modal</h6>
+      </template>
+
+      <template #body>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, consequatur amet quia eaque possimus dicta nam obcaecati animi commodi velit ea, expedita, ullam a quisquam. Ex, earum magni. Quia, tempore?</p>
+      </template>
+
+      <template #footer>
+        <div class="flex justify-end">
+          <button @click="customModalOpen = false">Close</button>
+        </div>
+      </template>
+  
+    </CustomModal>
+
     <AddButton @click="openModal = true"/>
+    
+    <AddButton2 @click="customModalOpen = true"/>
   </div>
 </template>
 
 <script setup lang="ts">
 
 import AddButton from '@/modules/common/components/AddButton.vue';
+import AddButton2 from '@/modules/common/components/AddButton2.vue';
 import InputModal from '@/modules/common/components/InputModal.vue';
+import CustomModal from '@/modules/common/components/CustomModal.vue';
 import { ref } from 'vue';
 
 const openModal = ref(false);
+const customModalOpen = ref(false);
+
+const onNewValue = (projectName: string) =>{
+console.log({projectName});
+}
+
+
 </script>
 
 <style scoped>
