@@ -3,26 +3,20 @@
     <table class="min-w-full bg-white border border-gray-200">
       <thead>
         <tr class="bg-gray-800 text-white">
+          <th class="py-2 px-4 border-b">#</th>
           <th class="py-2 px-4 border-b">Proyecto</th>
           <th class="py-2 px-4 border-b">Tareas</th>
           <th class="py-2 px-4 border-b">Avance</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="hover:bg-gray-100">
-          <td class="py-2 px-4 border-b">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-          <td class="py-2 px-4 border-b">Malcolm Lockyer</td>
-          <td class="py-2 px-4 border-b">1961</td>
-        </tr>
-        <tr class="hover:bg-gray-100">
-          <td class="py-2 px-4 border-b">Witchy Woman</td>
-          <td class="py-2 px-4 border-b">The Eagles</td>
-          <td class="py-2 px-4 border-b">1972</td>
-        </tr>
-        <tr class="hover:bg-gray-100">
-          <td class="py-2 px-4 border-b">Shining Star</td>
-          <td class="py-2 px-4 border-b">Earth, Wind, and Fire</td>
-          <td class="py-2 px-4 border-b">1975</td>
+        <tr  v-for="(project, index) in projectsStore.projectList"  :key="project.id" class="hover:bg-gray-100">
+          <td class="py-2 px-4 border-b">{{ index + 1 }}</td>
+          <td class="py-2 px-4 border-b">{{  project.name }}</td>
+          <td class="py-2 px-4 border-b">{{ project.tasks.length }}</td>
+          <td class="py-2 px-4 border-b">
+            <progress class="progress progress-accent w-56" value="1" max="100"></progress>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -30,7 +24,7 @@
     <InputModal 
     :open="openModal" 
     @close="openModal = false"
-    @value="onNewValue"/>
+    @value="projectsStore.addProject"/>
 
     <CustomModal :open="customModalOpen">
       <template #header>
@@ -62,13 +56,12 @@ import AddButton2 from '@/modules/common/components/AddButton2.vue';
 import InputModal from '@/modules/common/components/InputModal.vue';
 import CustomModal from '@/modules/common/components/CustomModal.vue';
 import { ref } from 'vue';
+import { useProjectsStore } from '../store/proyects.store';
 
 const openModal = ref(false);
 const customModalOpen = ref(false);
 
-const onNewValue = (projectName: string) =>{
-console.log({projectName});
-}
+const projectsStore = useProjectsStore();
 
 
 </script>

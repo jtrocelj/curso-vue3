@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.12",
+    "@vueuse/core": "^11.2.0",
     "pinia": "^2.2.5",
     "quasar": "^2.17.1",
+    "uuid": "^11.0.2",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
